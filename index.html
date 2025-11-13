@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEGA - شركة التطوير البرمجي</title>
+    <style>
+        /* التهيئة العامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Courier New', monospace;
+        }
+        
+        body {
+            background-color: #0a0a0a;
+            color: #00ff00;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        /* تأثير المطر البرمجي في الخلفية */
+        .matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
+        }
+        
+        /* التصميم العام */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* الهيدر */
+        header {
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            border-bottom: 1px solid #00ff00;
+            margin-bottom: 60px;
+            animation: glitch 5s infinite;
+        }
+        
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px #00ff00;
+            letter-spacing: 5px;
+        }
+        
+        .tagline {
+            font-size: 1.5rem;
+            color: #00cc00;
+            margin-bottom: 30px;
+        }
+        
+        /* الأقسام */
+        section {
+            padding: 60px 0;
+            border-bottom: 1px dashed #003300;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #00cc00;
+            text-shadow: 0 0 5px #00ff00;
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            color: #00ff00;
+        }
+        
+        p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        /* فريق العمل */
+        .team {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background: rgba(0, 30, 0, 0.3);
+            padding: 30px;
+            border-radius: 5px;
+            border: 1px solid #003300;
+            width: 45%;
+            min-width: 300px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px #00ff00;
+            border-color: #00ff00;
+        }
+        
+        .team-member::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(transparent, rgba(0, 255, 0, 0.1), transparent);
+            transform: translateY(-100%);
+            transition: transform 0.6s;
+        }
+        
+        .team-member:hover::before {
+            transform: translateY(100%);
+        }
+        
+        .username {
+            color: #00cc00;
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        
+        /* الخدمات */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .service {
+            background: rgba(0, 30, 0, 0.3);
+            padding: 30px;
+            border-radius: 5px;
+            border: 1px solid #003300;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .service:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px #00ff00;
+            border-color: #00ff00;
+        }
+        
+        /* التواصل */
+        .contact {
+            text-align: center;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .contact-link {
+            background: rgba(0, 30, 0, 0.3);
+            padding: 20px;
+            border-radius: 5px;
+            border: 1px solid #003300;
+            width: 250px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: #00ff00;
+        }
+        
+        .contact-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px #00ff00;
+            border-color: #00ff00;
+            color: #00ff00;
+        }
+        
+        /* الفوتر */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid #00ff00;
+            margin-top: 60px;
+            font-size: 1.2rem;
+        }
+        
+        /* الأنيميشن */
+        @keyframes glitch {
+            0% {
+                text-shadow: 0 0 10px #00ff00;
+            }
+            5% {
+                text-shadow: 2px 2px 0 #ff0000, -2px -2px 0 #0000ff;
+            }
+            6% {
+                text-shadow: 0 0 10px #00ff00;
+            }
+            10% {
+                text-shadow: 0 0 10px #00ff00;
+            }
+            11% {
+                text-shadow: -2px -2px 0 #ff0000, 2px 2px 0 #0000ff;
+            }
+            12% {
+                text-shadow: 0 0 10px #00ff00;
+            }
+            100% {
+                text-shadow: 0 0 10px #00ff00;
+            }
+        }
+        
+        @keyframes flicker {
+            0% {
+                opacity: 1;
+            }
+            3% {
+                opacity: 0.4;
+            }
+            6% {
+                opacity: 1;
+            }
+            7% {
+                opacity: 0.4;
+            }
+            8% {
+                opacity: 1;
+            }
+            9% {
+                opacity: 0.4;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        .flicker {
+            animation: flicker 10s infinite;
+        }
+        
+        /* تأثيرات النص */
+        .code-text {
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 20, 0, 0.5);
+            padding: 10px;
+            border-left: 3px solid #00ff00;
+            margin: 20px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end);
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        /* تأثيرات الوهج */
+        .glow {
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00;
+        }
+        
+        /* التجاوب مع الشاشات الصغيرة */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .team-member {
+                width: 100%;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- تأثير المطر البرمجي في الخلفية -->
+    <canvas class="matrix-bg" id="matrix"></canvas>
+    
+    <div class="container">
+        <!-- الهيدر -->
+        <header>
+            <h1 class="glow">VEGA</h1>
+            <p class="tagline flicker">حيث تتحول الأفكار إلى برمجيات خالدة</p>
+            <div class="code-text">
+                // نظام VEGA جاهز للاتصال...<br>
+                // تحميل الوحدات البرمجية...<br>
+                // الاتصال بقاعدة البيانات...<br>
+                > النظام جاهز للتشغيل
+            </div>
+        </header>
+        
+        <!-- قسم من نحن -->
+        <section id="about">
+            <h2>عقول إبداعية تلتقي تحت اسم Vega</h2>
+            <p>نحن أكثر من مجرد فريق؛ نحن عائلة برمجية صغيرة تتفنن في صنع الأدوات التي تُحدث فرقًا. انطلاقًا من قناتنا على تلجرام، نبني حلولًا رقمية تجمع بين القوة التقنية والتصميم الأنيق.</p>
+            <p>في عالم رقمي متسارع، نبتكر في <span class="glow">Vega</span> أدوات رقمية ذكية تُحدث الفرق. نحن جسر عبور أفكارك إلى الواقع الافتراضي، نترجم طموحاتك إلى مواقع ويب متكاملة، وبوتات تلجرام ذكية، وحلول برمجية متقنة بجميع اللغات والتقنيات.</p>
+        </section>
+        
+        <!-- قسم الفريق -->
+        <section id="team">
+            <h2>المهندسون وراء الإبداع</h2>
+            <div class="team">
+                <div class="team-member">
+                    <h3>فوكس فيجا (المطور الأول)</h3>
+                    <p>العقل المعماري وراء المشاريع المعقدة، خبير في إنشاء الهياكل البرمجية القوية والآمنة. هو من يضمن أن يكون الأساس متينًا قبل إضافة اللمسات السحرية.</p>
+                    <span class="username">يوزر التليجرام: @devvega</span>
+                </div>
+                <div class="team-member">
+                    <h3>كيمي فيجا (المطور الثاني)</h3>
+                    <p>ساحر الواجهات والوظائف، متخصص في تحويل الكود إلى تجارب مستخدم سلسة ومذهلة. هو من يضيف الروح والحيوية لكل مشروع.</p>
+                    <span class="username">يوزر التليجرام: @topvega</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- قسم الخدمات -->
+        <section id="services">
+            <h2>أدوات تُعزز وجودك الرقمي</h2>
+            <p>نطور مجموعة متكاملة من الحلول البرمجية المصممة خصيصًا لتناسب احتياجاتك:</p>
+            <div class="services">
+                <div class="service">
+                    <h3>تطوير مواقع الويب المتكاملة</h3>
+                    <p>من المدونات الشخصية إلى منصات التجارة الإلكترونية المعقدة، نصنع لك موقعًا يعبر عن هويتك ويحقق أهدافك.</p>
+                </div>
+                <div class="service">
+                    <h3>برمجة بوتات التليجرام</h3>
+                    <p>نطور بوتات ذكية لأتمتة المهام، إدارة المجموعات، تقديم خدمات العملاء، أو أي فكرة أخرى تخطر ببالك.</p>
+                </div>
+                <div class="service">
+                    <h3>حلول برمجية مخصصة</h3>
+                    <p>نحن لا نقدم منتجات جاهزة فقط، بل نصنع حلولًا فريدة من نوعها تناسب التحدي الذي تواجهه.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- قسم عالم فيجا -->
+        <section id="world">
+            <h2>عالم فيجا: حيث الإبداع يلتقي بالكود</h2>
+            <p>إن عالم فيجا مستوحى من ديناميكية ودهاء عالم الهاكر والبرمجيات. نحن لا نكتب أكوادًا فقط؛ نخلق عوالم رقمية تكون فيها كل سطر برمجي جزءًا من قصة نجاحك. الرسوم المتحركة والتصميم في موقعنا مستوحى من هذا العالم – سريع، ذكي، ومليء بالإمكانيات غير المحدودة.</p>
+            <div class="code-text flicker">
+                > نظام VEGA نشط<br>
+                > جاري مسح الثغرات الأمنية...<br>
+                > جاري تحميل الوحدات النمطية...<br>
+                > النظام جاهز للاستخدام
+            </div>
+        </section>
+        
+        <!-- قسم التواصل -->
+        <section id="contact" class="contact">
+            <h2>لنبدأ مشروعك معًا</h2>
+            <p>الأفكار العظيمة تبدأ بمحادثة. تواصل معنا مباشرة على منصتنا الرئيسية، تلجرام، وناقش فكرتك مع مهندسينا.</p>
+            <div class="contact-links">
+                <a href="https://t.me/vegaone" class="contact-link">
+                    <h3>قناة الشركة الرسمية</h3>
+                    <p>@vegaone</p>
+                </a>
+                <a href="https://t.me/devvega" class="contact-link">
+                    <h3>فوكس فيجا</h3>
+                    <p>@devvega</p>
+                    <p>(للمشاريع المعقدة والاستشارات)</p>
+                </a>
+                <a href="https://t.me/topvega" class="contact-link">
+                    <h3>كيمي فيجا</h3>
+                    <p>@topvega</p>
+                    <p>(للواجهات والتطوير المتكامل)</p>
+                </a>
+            </div>
+        </section>
+        
+        <!-- الفوتر -->
+        <footer>
+            <p class="glow">Vega - © 2024 | من فكرة إلى برمجية خالدة.</p>
+        </footer>
+    </div>
+
+    <script>
+        // تأثير المطر البرمجي (مصفوفة)
+        const canvas = document.getElementById('matrix');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const chars = "01010101010101010101010101VGAVEGAVEGA01010101010101010101010101";
+        const charArray = chars.split("");
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        const drops = [];
+        
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+        
+        function drawMatrix() {
+            ctx.fillStyle = "rgba(0, 10, 0, 0.04)";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = "#00ff00";
+            ctx.font = fontSize + "px monospace";
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = charArray[Math.floor(Math.random() * charArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
+            }
+        }
+        
+        setInterval(drawMatrix, 35);
+        
+        // تأثيرات عشوائية للرعب
+        function randomGlitch() {
+            const elements = document.querySelectorAll('h1, h2, h3, p');
+            const randomElement = elements[Math.floor(Math.random() * elements.length)];
+            
+            randomElement.style.textShadow = '2px 2px 0 red, -2px -2px 0 blue';
+            randomElement.style.transform = 'translateX(5px)';
+            
+            setTimeout(() => {
+                randomElement.style.textShadow = '';
+                randomElement.style.transform = '';
+            }, 100);
+        }
+        
+        setInterval(randomGlitch, 3000);
+        
+        // تأثير الكتابة للنصوص
+        function typeWriter(element, text, speed) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                }
+            }
+            
+            typing();
+        }
+        
+        // تأثيرات إضافية عند التمرير
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            document.querySelector('header').style.transform = `translateY(${rate}px)`;
+        });
+        
+        // تأثيرات الوميض العشوائية
+        function randomFlicker() {
+            const flickerElements = document.querySelectorAll('.flicker');
+            flickerElements.forEach(el => {
+                if (Math.random() > 0.7) {
+                    el.style.opacity = Math.random() * 0.5 + 0.5;
+                }
+            });
+        }
+        
+        setInterval(randomFlicker, 200);
+    </script>
+</body>
+</html>
