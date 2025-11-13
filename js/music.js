@@ -43,22 +43,31 @@ function initMusic() {
     function playMusic() {
         if (!userInteracted) return;
         
+        bgMusic.volume = 0.5; // ضبط مستوى الصوت
         bgMusic.play().then(() => {
             isPlaying = true;
             musicToggle.innerHTML = '<i class="fas fa-volume-up"></i>';
-            musicToggle.querySelector('.nav-tooltip').textContent = 'كتم الصوت';
+            const tooltip = musicToggle.querySelector('.nav-tooltip');
+            if (tooltip) {
+                tooltip.textContent = 'كتم الصوت';
+            }
             
             // إضافة تأثير صوتي عند التشغيل
-            gsap.to(musicToggle, {
-                scale: 1.3,
-                duration: 0.3,
-                yoyo: true,
-                repeat: 1
-            });
+            if (typeof gsap !== 'undefined') {
+                gsap.to(musicToggle, {
+                    scale: 1.3,
+                    duration: 0.3,
+                    yoyo: true,
+                    repeat: 1
+                });
+            }
         }).catch(error => {
             console.log('تعذر تشغيل الموسيقى:', error);
             musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
-            musicToggle.querySelector('.nav-tooltip').textContent = 'تشغيل الموسيقى';
+            const tooltip = musicToggle.querySelector('.nav-tooltip');
+            if (tooltip) {
+                tooltip.textContent = 'تشغيل الموسيقى';
+            }
         });
     }
 
@@ -66,15 +75,20 @@ function initMusic() {
         bgMusic.pause();
         isPlaying = false;
         musicToggle.innerHTML = '<i class="fas fa-volume-mute"></i>';
-        musicToggle.querySelector('.nav-tooltip').textContent = 'تشغيل الموسيقى';
+        const tooltip = musicToggle.querySelector('.nav-tooltip');
+        if (tooltip) {
+            tooltip.textContent = 'تشغيل الموسيقى';
+        }
         
         // إضافة تأثير عند الإيقاف
-        gsap.to(musicToggle, {
-            scale: 0.8,
-            duration: 0.2,
-            yoyo: true,
-            repeat: 1
-        });
+        if (typeof gsap !== 'undefined') {
+            gsap.to(musicToggle, {
+                scale: 0.8,
+                duration: 0.2,
+                yoyo: true,
+                repeat: 1
+            });
+        }
     }
 
     // محاولة تشغيل الموسيقى بعد تحميل الصفحة بفترة
