@@ -80,6 +80,15 @@
     section {
         padding: 80px 5%;
     }
+    
+    .holographic-terminal {
+        padding: 30px 20px;
+    }
+    
+    .info-line {
+        padding: 10px 15px;
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -124,7 +133,7 @@
     }
     
     .holographic-terminal {
-        padding: 30px 20px;
+        padding: 25px 15px;
     }
     
     .service-card,
@@ -151,6 +160,16 @@
     .custom-cursor,
     .cursor-follower {
         display: none;
+    }
+    
+    .info-line {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .info-line.developer {
+        margin-left: 0;
     }
 }
 
@@ -223,6 +242,14 @@
     .loading-bar {
         width: 250px;
     }
+    
+    .holographic-terminal {
+        padding: 20px 15px;
+    }
+    
+    .terminal-body {
+        font-size: 0.9rem;
+    }
 }
 
 @media (max-width: 400px) {
@@ -243,10 +270,15 @@
     }
     
     .holographic-terminal {
-        padding: 20px 15px;
+        padding: 15px 10px;
     }
     
     .terminal-body {
+        font-size: 0.8rem;
+    }
+    
+    .info-line {
+        padding: 8px 12px;
         font-size: 0.9rem;
     }
 }

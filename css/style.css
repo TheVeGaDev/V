@@ -621,3 +621,230 @@ p {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0, 255, 157, 0.3);
 }
+
+/* الأنماط الجديدة للمحاكي الطرفي */
+.vega-info-section {
+    margin-top: 30px;
+    border-top: 1px solid rgba(0, 255, 157, 0.3);
+    padding-top: 20px;
+    position: relative;
+}
+
+.info-line {
+    margin: 15px 0;
+    padding: 12px 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+}
+
+.info-line i {
+    font-size: 1.3rem;
+    min-width: 25px;
+    text-align: center;
+}
+
+.info-line.highlight {
+    background: rgba(0, 255, 157, 0.1);
+    border: 1px solid rgba(0, 255, 157, 0.3);
+    color: var(--neon-green);
+}
+
+.info-line.channel {
+    background: rgba(0, 162, 255, 0.1);
+    border: 1px solid rgba(0, 162, 255, 0.3);
+    color: var(--neon-blue);
+}
+
+.info-line.copyright {
+    background: rgba(179, 0, 255, 0.1);
+    border: 1px solid rgba(179, 0, 255, 0.3);
+    color: var(--neon-purple);
+}
+
+.info-line.developer-title {
+    background: rgba(255, 0, 200, 0.1);
+    border: 1px solid rgba(255, 0, 200, 0.3);
+    color: var(--neon-pink);
+}
+
+.info-line.developer {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-left: 40px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.info-line.developer:hover {
+    background: rgba(0, 255, 157, 0.2);
+    transform: translateX(10px);
+}
+
+/* الأنماط الجديدة للتحسينات */
+.section-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--neon-green), var(--neon-blue));
+    color: var(--dark-space);
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    animation: bounce 2s infinite;
+    box-shadow: 0 0 20px rgba(0, 255, 157, 0.5);
+}
+
+.tech-bubbles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.tech-bubble {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(0, 255, 157, 0.1);
+    border: 1px solid rgba(0, 255, 157, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--neon-green);
+    opacity: 0;
+}
+
+.pulse-ring {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid var(--neon-blue);
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulse-ring 3s linear infinite;
+}
+
+.matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.1;
+}
+
+.glitch-text {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.glitch-text::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--neon-pink);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--neon-blue);
+    clip: rect(44px, 450px, 56px, 0);
+    animation: glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.2em;
+    background-color: var(--neon-green);
+    margin-left: 2px;
+    animation: blink 1s infinite;
+    vertical-align: middle;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--neon-green);
+    font-size: 1.5rem;
+    animation: bounce 2s infinite;
+    z-index: 10;
+}
+
+.progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--neon-green), var(--neon-blue));
+    z-index: 1000;
+    transition: width 0.3s ease;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--neon-green);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.floating-code {
+    position: absolute;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: rgba(0, 255, 157, 0.7);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.data-stream {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, 
+        var(--neon-green), 
+        var(--neon-blue), 
+        var(--neon-purple), 
+        var(--neon-pink));
+    background-size: 200% 100%;
+    animation: dataStream 2s linear infinite;
+}
