@@ -6,577 +6,415 @@
     <title>VEGA - أول فريق برمجيات مصري</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --egyptian-blue: #0033a0;
-            --egyptian-gold: #ffd700;
-            --egyptian-red: #ce1126;
-            --egyptian-sand: #f0e6d2;
-            --egyptian-green: #006747;
-            --dark-blue: #0a1930;
-            --text-light: #f8f9fa;
-            --glow: 0 0 10px, 0 0 20px, 0 0 30px;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Cairo', 'Segoe UI', sans-serif;
         }
 
-        html {
-            scroll-behavior: smooth;
+        :root {
+            --gold: #FFD700;
+            --red: #CE1126;
+            --black: #000000;
+            --white: #FFFFFF;
+            --dark-blue: #0a1930;
+            --navy: #0033a0;
         }
 
         body {
-            background: linear-gradient(135deg, var(--dark-blue) 0%, #0a0a2a 100%);
-            color: var(--text-light);
+            background: linear-gradient(135deg, var(--dark-blue) 0%, #000000 100%);
+            color: var(--white);
             overflow-x: hidden;
-            line-height: 1.7;
-            background-image: 
-                url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%230033a0' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
         }
 
-        /* هرم متحرك في الخلفية */
-        .pyramid-bg {
+        .egyptian-pattern {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            opacity: 0.1;
             background: 
-                radial-gradient(circle at 20% 80%, var(--egyptian-gold) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, var(--egyptian-blue) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, var(--egyptian-red) 0%, transparent 50%);
-            animation: pyramidFloat 20s ease-in-out infinite;
+                radial-gradient(circle at 20% 80%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(206, 17, 38, 0.1) 0%, transparent 50%);
+            z-index: -1;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 20px;
         }
 
-        /* الهيدر المصري */
-        .egyptian-header {
+        /* الهيدر */
+        .hero-section {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        .header-content {
-            z-index: 2;
-            position: relative;
         }
 
         .egyptian-badge {
-            background: linear-gradient(45deg, var(--egyptian-red), var(--egyptian-gold));
-            color: white;
-            padding: 10px 25px;
-            border-radius: 30px;
+            background: linear-gradient(45deg, var(--red), var(--gold));
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 25px;
             font-weight: bold;
             margin-bottom: 30px;
             display: inline-block;
             animation: pulse 2s infinite;
-            box-shadow: 0 0 20px rgba(206, 17, 38, 0.5);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
         }
 
         h1 {
-            font-size: 5rem;
+            font-size: 4rem;
             margin-bottom: 20px;
-            background: linear-gradient(45deg, var(--egyptian-gold), var(--egyptian-blue), var(--egyptian-red));
+            background: linear-gradient(45deg, var(--gold), var(--red), var(--navy));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            position: relative;
         }
 
-        h1::after {
-            content: "";
-            position: absolute;
-            bottom: -10px;
-            right: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--egyptian-gold), var(--egyptian-blue), transparent);
-        }
-
-        .header-subtitle {
-            font-size: 1.8rem;
+        .subtitle {
+            font-size: 1.5rem;
             margin-bottom: 40px;
-            color: var(--egyptian-gold);
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            color: var(--gold);
         }
 
         /* الأقسام */
         section {
-            padding: 100px 0;
-            position: relative;
+            padding: 80px 0;
         }
 
         h2 {
-            font-size: 3.5rem;
-            margin-bottom: 50px;
+            font-size: 2.5rem;
             text-align: center;
-            color: var(--egyptian-gold);
+            margin-bottom: 50px;
+            color: var(--gold);
             position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
-        h2::before, h2::after {
-            content: "◆";
-            color: var(--egyptian-red);
-            margin: 0 15px;
-            font-size: 2rem;
+        h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--red), var(--gold));
         }
 
-        /* بطاقات الخدمات */
+        /* الخدمات */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 60px;
+            margin-top: 50px;
         }
 
         .service-card {
-            background: rgba(10, 25, 47, 0.8);
-            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
             padding: 40px 30px;
+            border-radius: 15px;
             text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            position: relative;
-            overflow: hidden;
             backdrop-filter: blur(10px);
-        }
-
-        .service-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, var(--egyptian-red), var(--egyptian-gold), var(--egyptian-blue));
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: transform 0.3s ease;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 51, 160, 0.3);
-            border-color: var(--egyptian-gold);
+            border-color: var(--gold);
         }
 
         .service-icon {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
-            color: var(--egyptian-gold);
-            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-        }
-
-        .service-card h3 {
-            font-size: 1.8rem;
+            font-size: 3rem;
+            color: var(--gold);
             margin-bottom: 20px;
-            color: var(--egyptian-gold);
         }
 
-        /* قسم الفريق المصري */
-        .egyptian-team {
-            background: rgba(0, 51, 160, 0.1);
+        /* الفريق */
+        .team-section {
+            background: rgba(206, 17, 38, 0.1);
             border-radius: 20px;
             padding: 60px 40px;
-            margin-top: 60px;
-            text-align: center;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            position: relative;
         }
 
-        .team-members {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             margin-top: 50px;
         }
 
         .team-member {
             text-align: center;
-            max-width: 300px;
         }
 
         .member-avatar {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
+            background: linear-gradient(45deg, var(--red), var(--gold));
             margin: 0 auto 20px;
-            background: linear-gradient(45deg, var(--egyptian-red), var(--egyptian-gold));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: white;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .member-avatar::before {
-            content: "";
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: conic-gradient(from 0deg, var(--egyptian-red), var(--egyptian-gold), var(--egyptian-blue), var(--egyptian-red));
-            border-radius: 50%;
-            z-index: -1;
-            animation: rotate 3s linear infinite;
         }
 
         .member-name {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
+            color: var(--gold);
             margin-bottom: 10px;
-            color: var(--egyptian-gold);
         }
 
-        .member-role {
-            color: var(--egyptian-blue);
-            font-weight: bold;
-        }
-
-        /* قسم المميزات */
+        /* المميزات */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
         }
 
         .feature-card {
             background: rgba(255, 215, 0, 0.1);
-            border-radius: 15px;
             padding: 30px;
+            border-radius: 15px;
             text-align: center;
             border: 1px solid rgba(255, 215, 0, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            background: rgba(255, 215, 0, 0.2);
-            transform: scale(1.05);
         }
 
         .feature-icon {
             font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--egyptian-gold);
+            color: var(--gold);
+            margin-bottom: 15px;
         }
 
-        /* قسم الاتصال */
+        /* التواصل */
         .contact-section {
             text-align: center;
-        }
-
-        .contact-card {
-            background: rgba(10, 25, 47, 0.9);
+            background: rgba(0, 51, 160, 0.1);
             border-radius: 20px;
-            padding: 50px;
-            max-width: 600px;
-            margin: 0 auto;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 60px 40px;
         }
 
         .telegram-btn {
             display: inline-block;
-            background: linear-gradient(45deg, var(--egyptian-blue), #0088cc);
+            background: linear-gradient(45deg, var(--navy), #0088cc);
             color: white;
-            padding: 15px 30px;
+            padding: 15px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
             margin-top: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 51, 160, 0.4);
+            transition: transform 0.3s ease;
         }
 
         .telegram-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 51, 160, 0.6);
         }
 
         /* الفوتر */
         footer {
-            padding: 60px 0 40px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 40px 0;
             text-align: center;
-            border-top: 1px solid rgba(255, 215, 0, 0.3);
             margin-top: 60px;
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        .footer-content {
-            max-width: 800px;
-            margin: 0 auto;
         }
 
         .copyright {
-            margin-top: 30px;
-            color: var(--egyptian-gold);
+            color: var(--gold);
             font-weight: bold;
+            margin-top: 20px;
         }
 
         /* الأنيميشن */
-        @keyframes pyramidFloat {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.1) rotate(1deg); }
-        }
-
         @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 20px rgba(206, 17, 38, 0.5); }
-            50% { transform: scale(1.05); box-shadow: 0 0 30px rgba(206, 17, 38, 0.8); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
 
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* التجاوب مع الشاشات الصغيرة */
+        /* التجاوب */
         @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
-            }
-            
-            h2 {
-                font-size: 2.5rem;
-            }
-            
-            .services-grid, .features-grid {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            .services-grid, .team-grid, .features-grid {
                 grid-template-columns: 1fr;
-            }
-            
-            .team-members {
-                flex-direction: column;
-                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <!-- هرم الخلفية -->
-    <div class="pyramid-bg"></div>
-
+    <div class="egyptian-pattern"></div>
+    
     <div class="container">
         <!-- الهيدر -->
-        <header class="egyptian-header">
-            <div class="header-content">
+        <section class="hero-section">
+            <div>
                 <div class="egyptian-badge">أول فريق برمجيات مصري</div>
                 <h1>فريق VEGA</h1>
-                <p class="header-subtitle">براعة مصرية في عالم البرمجة والتطوير</p>
-                <p>نحن أول فريق مصري متخصص في تطوير البرمجيات، نقدم حلولاً تقنية متكاملة تجمع بين الأصالة المصرية والتطور التقني</p>
-            </div>
-        </header>
-
-        <!-- قسم من نحن -->
-        <section id="about">
-            <h2>من نحن</h2>
-            <div class="service-card">
-                <p>فريق <strong>VEGA</strong> هو أول فريق برمجيات مصري متكامل، نفتخر بأصولنا المصرية ونعمل بكل إخلاص لتقديم أفضل الحلول البرمجية. نحن جسر الوصل بين الإبداع المصري والعالم الرقمي.</p>
-                <p>بخبرة تمتد منذ 2015، أصبحنا الرائدة في مجال تطوير البرمجيات عربيًا، ونفتخر بأننا نقدم خدماتنا بجودة عالمية وأسعار تنافسية.</p>
+                <p class="subtitle">براعة مصرية في عالم البرمجة والتطوير</p>
+                <p>نحن أول فريق مصري متخصص في تطوير البرمجيات منذ 2015</p>
             </div>
         </section>
 
-        <!-- قسم خدماتنا -->
+        <!-- الخدمات -->
         <section id="services">
-            <h2>خدماتنا</h2>
+            <h2>خدماتنا المميزة</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-code"></i>
                     </div>
                     <h3>أكواد برمجة بجميع اللغات</h3>
-                    <p>تطوير حلول برمجية متكاملة بجميع لغات البرمجة الحديثة وبأعلى معايير الجودة</p>
+                    <p>تطوير حلول برمجية متكاملة بجميع لغات البرمجة</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-music"></i>
                     </div>
                     <h3>ملفات ومصانع ميوزك</h3>
-                    <p>تصميم وتطوير أنظمة موسيقية متكاملة مع أحدث التقنيات والمميزات</p>
+                    <p>أنظمة موسيقية متكاملة بأحدث التقنيات</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
                     <h3>أنظمة حماية متقدمة</h3>
-                    <p>تطوير أنظمة حماية قوية تشمل ملفات LUA & PHP وحلول أمنية شاملة</p>
+                    <p>حلول أمنية شاملة تشمل LUA & PHP</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fab fa-telegram"></i>
                     </div>
-                    <h3>ملفات ومصانع تليثون</h3>
-                    <p>تطوير بوتات وملفات تليثون متقدمة بميزات فريدة وأداء متميز</p>
+                    <h3>ملفات تليثون متطورة</h3>
+                    <p>بوتات وملفات تليثون بميزات فريدة</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-users"></i>
                     </div>
                     <h3>أنظمة نقل أعضاء</h3>
-                    <p>أنظمة نقل أعمال متطورة بخيارات مخفي وظاهر لإدارة المجموعات بكفاءة</p>
+                    <p>أنظمة نقل أعمال بخيارات متقدمة</p>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-bolt"></i>
                     </div>
                     <h3>ملفات شد ونشر تلقائي</h3>
-                    <p>أنظمة نشر تلقائي متقدمة وملفات شد بمميزات فريدة وأداء استثنائي</p>
+                    <p>أنظمة نشر تلقائي بمميزات استثنائية</p>
                 </div>
             </div>
         </section>
 
-        <!-- قسم المميزات -->
+        <!-- المميزات -->
         <section id="features">
             <h2>مميزاتنا</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-cogs"></i>
+                        <i class="fas fa-tools"></i>
                     </div>
-                    <h3>عمل أي كود أو تعديل أي ملف</h3>
-                    <p>نقوم بتطوير أي كود برمجي أو تعديل أي ملف حسب متطلباتك</p>
+                    <h3>عمل أي كود أو تعديل</h3>
+                    <p>نقوم بتطوير أي كود برمجي أو تعديل أي ملف</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-tags"></i>
+                        <i class="fas fa-tag"></i>
                     </div>
                     <h3>أسعار رمزية</h3>
-                    <p>نقدم خدماتنا بأسعار تنافسية وجودة لا تضاهى</p>
+                    <p>جودة عالية بأسعار تنافسية</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
+                        <i class="fas fa-bug"></i>
                     </div>
                     <h3>حل جميع الأخطاء</h3>
-                    <p>نقدم خدمة متكاملة لحل جميع الأخطاء البرمجية والفنية</p>
+                    <p>خدمة متكاملة لحل الأخطاء البرمجية</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-server"></i>
                     </div>
-                    <h3>خوادم واستضافات مضمونة</h3>
-                    <p>نوفر خوادم واستضافات سريعة ومضمونة بسعات مختلفة</p>
+                    <h3>خوادم واستضافات</h3>
+                    <p>خوادم سريعة ومضمونة بسعات مختلفة</p>
                 </div>
             </div>
         </section>
 
-        <!-- قسم الفريق -->
+        <!-- الفريق -->
         <section id="team">
             <h2>فريقنا المصري</h2>
-            <div class="egyptian-team">
-                <p>نحن فريق مصري متميز يجمع بين الخبرة التقنية والإبداع، نعمل معًا لتقديم أفضل الحلول البرمجية</p>
-                <div class="team-members">
+            <div class="team-section">
+                <div class="team-grid">
                     <div class="team-member">
                         <div class="member-avatar">
-                            <i class="fas fa-user-ninja"></i>
+                            <i class="fas fa-user"></i>
                         </div>
                         <h3 class="member-name">فوكس</h3>
-                        <p class="member-role">@DevVEGA</p>
-                        <p>المطور الرئيسي والخبير في البنى التحتية المعقدة</p>
+                        <p>@DevVEGA</p>
+                        <p>المطور الرئيسي والخبير التقني</p>
                     </div>
                     <div class="team-member">
                         <div class="member-avatar">
-                            <i class="fas fa-wand-magic-sparkles"></i>
+                            <i class="fas fa-user"></i>
                         </div>
                         <h3 class="member-name">كيمي</h3>
-                        <p class="member-role">@TopVeGa</p>
-                        <p>مطور الواجهات والخبير في تجربة المستخدم</p>
+                        <p>@TopVeGa</p>
+                        <p>مطور الواجهات وتجربة المستخدم</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- قسم التواصل -->
-        <section id="contact" class="contact-section">
+        <!-- التواصل -->
+        <section id="contact">
             <h2>تواصل معنا</h2>
-            <div class="contact-card">
-                <p>للاستفسارات أو طلب الخدمات، تواصل معنا مباشرة على تليجرام</p>
+            <div class="contact-section">
+                <p>للاستفسارات أو طلب الخدمات</p>
                 <div style="margin: 30px 0;">
                     <p><strong>المطور كيمي:</strong> @TopVeGa</p>
                     <p><strong>المطور فوكس:</strong> @DevVEGA</p>
                 </div>
                 <p>نستقبل الدفع بجميع العملات الرقمية الدولية</p>
                 <a href="https://t.me/TopVeGa" class="telegram-btn">
-                    <i class="fab fa-telegram"></i> تواصل معنا على تليجرام
+                    <i class="fab fa-telegram"></i> تواصل على تليجرام
                 </a>
             </div>
         </section>
 
         <!-- الفوتر -->
         <footer>
-            <div class="footer-content">
-                <h3>VEGA - قمة التميز البرمجي المصري</h3>
+            <div class="container">
+                <h3>VEGA - التميز البرمجي المصري</h3>
                 <p>أول فريق مصري متخصص في تطوير بايثون Python</p>
                 <p>القناة #Code الرسمية الرائدة في تعليم البرمجة عربيًا</p>
                 <div class="copyright">
-                    جميع الحقوق والنشر محفوظة: ©️ VEGA™ ₂₀₁₅
+                    ©️ VEGA™ ₂₀₁₅ - جميع الحقوق محفوظة
                 </div>
             </div>
         </footer>
     </div>
 
     <script>
-        // تأثيرات تفاعلية
+        // تأثيرات بسيطة
         document.addEventListener('DOMContentLoaded', function() {
-            // تأثيرات الظهور عند التمرير
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.animation = `fadeInUp 0.6s ease forwards`;
-                    }
-                });
-            }, observerOptions);
-
-            // تطبيق تأثيرات الظهور على العناصر
-            document.querySelectorAll('.service-card, .feature-card, .team-member').forEach(el => {
-                el.style.opacity = '0';
-                observer.observe(el);
+            // تأثير الظهور التدريجي
+            const cards = document.querySelectorAll('.service-card, .feature-card, .team-member');
+            cards.forEach((card, index) => {
+                card.style.animation = `fadeIn 0.6s ease ${index * 0.1}s forwards`;
+                card.style.opacity = '0';
             });
-
-            // تأثيرات العائمة العشوائية
-            setInterval(() => {
-                const cards = document.querySelectorAll('.service-card');
-                const randomCard = cards[Math.floor(Math.random() * cards.length)];
-                
-                randomCard.style.transform = 'translateY(-10px)';
-                setTimeout(() => {
-                    randomCard.style.transform = 'translateY(0)';
-                }, 2000);
-            }, 3000);
         });
     </script>
 </body>
