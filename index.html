@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VEGA - الثورة البرمجية المصرية</title>
+    <meta name="description" content="VEGA - أول فريق برمجيات مصري يقدم حلول برمجية متكاملة باستخدام أحدث التقنيات">
+    
+    <!-- الروابط الخارجية -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/TextPlugin.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- ملفات الموقع -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- شاشة التحميل -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-logo">VEGA</div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingProgress"></div>
+        </div>
+        <p class="loading-text">جاري تحميل الثورة البرمجية...</p>
+    </div>
+
+    <!-- مؤثر صوتي -->
+    <audio id="bgMusic" loop>
+        <source src="audio/vega-theme.mp3" type="audio/mpeg">
+        <source src="audio/vega-theme.ogg" type="audio/ogg">
+        المتصفح الخاص بك لا يدعم تشغيل الصوت.
+    </audio>
+
+    <!-- مؤشر مخصص -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- خلفية Three.js -->
+    <div id="three-container"></div>
+
+    <!-- الشعار -->
+    <div class="floating-logo">
+        <div class="vega-logo">VEGA</div>
+        <div class="egyptian-badge">أول فريق برمجيات مصري</div>
+    </div>
+
+    <!-- التنقل المغناطيسي -->
+    <nav class="magnetic-nav">
+        <div class="magnetic-item" data-target="home">
+            <i class="fas fa-home"></i>
+            <div class="nav-tooltip">الرئيسية</div>
+        </div>
+        <div class="magnetic-item" data-target="services">
+            <i class="fas fa-cogs"></i>
+            <div class="nav-tooltip">الخدمات</div>
+        </div>
+        <div class="magnetic-item" data-target="team">
+            <i class="fas fa-users"></i>
+            <div class="nav-tooltip">الفريق</div>
+        </div>
+        <div class="magnetic-item" data-target="contact">
+            <i class="fas fa-comments"></i>
+            <div class="nav-tooltip">التواصل</div>
+        </div>
+        <div class="magnetic-item" id="musicToggle">
+            <i class="fas fa-music"></i>
+            <div class="nav-tooltip">الموسيقى</div>
+        </div>
+    </nav>
+
+    <!-- الأقسام -->
+    <section id="home" class="cosmic-hero">
+        <div class="hero-content">
+            <h1 class="hero-title">VEGA</h1>
+            <p class="hero-subtitle">الثورة البرمجية المصرية تبدأ هنا</p>
+            
+            <div class="holographic-terminal">
+                <div class="terminal-header">
+                    <div class="terminal-title">vega-ai-terminal</div>
+                    <div class="terminal-controls">
+                        <div class="control close"></div>
+                        <div class="control minimize"></div>
+                        <div class="control maximize"></div>
+                    </div>
+                </div>
+                <div class="terminal-body">
+                    <div class="code-line">
+                        <span class="prompt">></span> <span class="command">تهيئة نظام VEGA الذكي...</span>
+                    </div>
+                    <div class="code-line response">
+                        ✓ تحميل وحدات الذكاء الاصطناعي...
+                    </div>
+                    <div class="code-line response">
+                        ✓ تفعيل محرك التطوير المتقدم...
+                    </div>
+                    <div class="code-line response">
+                        ✓ الاتصال بالشبكة العصبية...
+                    </div>
+                    <div class="code-line">
+                        <span class="prompt">></span> <span class="command">تشغيل الوضع الإبداعي</span>
+                    </div>
+                    <div class="code-line response">
+                        🚀 النظام جاهز للانطلاق نحو الإبداع!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>خدماتنا المتطورة</h2>
+            <p class="section-subtitle">نقدم حلولاً برمجية متكاملة تجمع بين الإبداع والتقنية المتقدمة</p>
+            
+            <div class="services-grid">
+                <div class="service-card holographic-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>أكواد برمجة متقدمة</h3>
+                    <p>تطوير حلول برمجية مبتكرة بجميع لغات البرمجة الحديثة، مع دمج تقنيات الذكاء الاصطناعي والتعلم الآلي.</p>
+                    <div class="service-contacts">
+                        <a href="https://t.me/TopVeGa" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> كيمي فيجا
+                        </a>
+                        <a href="https://t.me/DevVEGA" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> فوكس فيجا
+                        </a>
+                        <a href="https://t.me/ENG_ROMIO" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> eng romio
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card holographic-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>أنظمة ذكاء اصطناعي</h3>
+                    <p>تصميم وتطوير أنظمة ذكية قادرة على التعلم والتكيف مع احتياجاتك الخاصة.</p>
+                    <div class="service-contacts">
+                        <a href="https://t.me/TopVeGa" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> كيمي فيجا
+                        </a>
+                        <a href="https://t.me/DevVEGA" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> فوكس فيجا
+                        </a>
+                        <a href="https://t.me/ENG_ROMIO" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> eng romio
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="service-card holographic-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>حماية متطورة</h3>
+                    <p>أنظمة حماية ذكية تستخدم أحدث تقنيات التشفير والمراقبة لحماية بياناتك.</p>
+                    <div class="service-contacts">
+                        <a href="https://t.me/TopVeGa" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> كيمي فيجا
+                        </a>
+                        <a href="https://t.me/DevVEGA" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> فوكس فيجا
+                        </a>
+                        <a href="https://t.me/ENG_ROMIO" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> eng romio
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-card holographic-card">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>تطبيقات الذكاء الاصطناعي</h3>
+                    <p>تطوير تطبيقات ذكية متقدمة باستخدام أحدث تقنيات الذكاء الاصطناعي والتعلم العميق.</p>
+                    <div class="service-contacts">
+                        <a href="https://t.me/TopVeGa" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> كيمي فيجا
+                        </a>
+                        <a href="https://t.me/DevVEGA" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> فوكس فيجا
+                        </a>
+                        <a href="https://t.me/ENG_ROMIO" class="contact-btn" target="_blank">
+                            <i class="fab fa-telegram"></i> eng romio
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <h2>فريقنا المبدع</h2>
+            <p class="section-subtitle">عقول مصرية مبدعة تصنع المستقبل الرقمي</p>
+            
+            <div class="team-grid">
+                <div class="team-member holographic-card">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-astronaut"></i>
+                    </div>
+                    <h3>فوكس فيجا</h3>
+                    <p class="username">@DevVEGA</p>
+                    <p>مهندس برمجيات محترف بخبرة 9+ سنوات في تطوير الأنظمة المعقدة والخوادم عالية الأداء.</p>
+                    <div class="member-skills">
+                        <span class="skill-tag">أنظمة معقدة</span>
+                        <span class="skill-tag">خوادم</span>
+                        <span class="skill-tag">أمن المعلومات</span>
+                    </div>
+                </div>
+                
+                <div class="team-member holographic-card">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-ninja"></i>
+                    </div>
+                    <h3>كيمي فيجا</h3>
+                    <p class="username">@TopVeGa</p>
+                    <p>مطور واجهات مستخدم مبدع، متخصص في إنشاء تجارب مستخدم استثنائية وسهلة الاستخدام.</p>
+                    <div class="member-skills">
+                        <span class="skill-tag">واجهات مستخدم</span>
+                        <span class="skill-tag">تجربة مستخدم</span>
+                        <span class="skill-tag">تصميم تفاعلي</span>
+                    </div>
+                </div>
+
+                <div class="team-member holographic-card">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-robot"></i>
+                    </div>
+                    <h3>eng romio</h3>
+                    <p class="username">@ENG_ROMIO</p>
+                    <p>خبير في الذكاء الاصطناعي والتعلم الآلي، متخصص في تطوير أنظمة ذكية متقدمة وحلول مبتكرة.</p>
+                    <div class="member-skills">
+                        <span class="skill-tag">ذكاء اصطناعي</span>
+                        <span class="skill-tag">تعلم آلي</span>
+                        <span class="skill-tag">بيانات ضخمة</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>لنبدأ مشروعك</h2>
+            <p class="section-subtitle">اتصل بنا وكن جزءاً من ثورتنا البرمجية</p>
+            
+            <div class="contact-grid">
+                <div class="contact-card holographic-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>كيمي فيجا</h3>
+                    <p>@TopVeGa</p>
+                    <p>متخصص في الواجهات والتطوير المتكامل</p>
+                    <a href="https://t.me/TopVeGa" class="contact-link" target="_blank">
+                        ابدأ المحادثة <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+                
+                <div class="contact-card holographic-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>فوكس فيجا</h3>
+                    <p>@DevVEGA</p>
+                    <p>متخصص في الأنظمة المعقدة والاستشارات</p>
+                    <a href="https://t.me/DevVEGA" class="contact-link" target="_blank">
+                        ابدأ المحادثة <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+                
+                <div class="contact-card holographic-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>eng romio</h3>
+                    <p>@ENG_ROMIO</p>
+                    <p>متخصص في الذكاء الاصطناعي والحلول الذكية</p>
+                    <a href="https://t.me/ENG_ROMIO" class="contact-link" target="_blank">
+                        ابدأ المحادثة <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+
+                <div class="contact-card holographic-card">
+                    <div class="contact-icon">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3>القناة الرسمية</h3>
+                    <p>@vegaone</p>
+                    <p>تابع آخر إبداعاتنا وتحديثاتنا</p>
+                    <a href="https://t.me/vegaone" class="contact-link" target="_blank">
+                        اشترك الآن <i class="fas fa-arrow-left"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ملفات JavaScript -->
+    <script src="js/three-background.js"></script>
+    <script src="js/cursor.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
